@@ -1,0 +1,30 @@
+{
+  "name": "league-connector",
+  "version": "1.0.0",
+  "description": "Simplifies the connection to League of Legends client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netcatt/league-connector.git"
+  },
+  "author": "kko7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netcatt/league-connector/issues"
+  },
+  "homepage": "https://github.com/netcatt/league-connector#readme",
+  "dependencies": {
+    "chokidar": "^3.4.0",
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
