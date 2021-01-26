@@ -8,43 +8,8 @@ class ConnectionHandler extends EventEmitter {
     this._startLockfileWatcher(path)
   }
 
-  async login () {
-    this.loginData = await this._waitForConnection()
-    console.log('[ConnectionHandler] Player is logged into League of Legends')
-    this.loggedIn = true
-
-    this.emit('logged-in', this.loginData)
-  }
-
   hasStarted () {
     return this._lockfileWatcher
-  }
-
-  _waitForConnection () {
-    const self = this
-
-    function timer (cb, ms = 0) {
-      self._sessionCheckTimerId = setTimeout(() => {
-        self._checkSession().then(data => {
-          if (data) {
-            return cb(data)
-          }
-
-          timer(cb, 500)
-          self.emit('logged-off')
-        }).catch(err => {
-          if (err.code !== 'ECONNREFUSED' && !err.toString().includes('Couldn\'t get port')) {
-            return console.error(err)
-          }
-
-          timer(cb, 500)
-          self.emit('logged-off')
-        })
-      }, ms)
-    }
-
-    console.log('[ConnectionHandler] Checking session...')
-    return new Promise(resolve => timer(data => resolve(data)))
   }
 
   end () {
@@ -92,7 +57,6 @@ class ConnectionHandler extends EventEmitter {
         console.log('[ConnectionHandler] Connection to League has ended')
 
         this.connected = false
-        this.loginData = this._lockfile = null
 
         this.emit('disconnected')
       })
@@ -140,14 +104,15 @@ class ConnectionHandler extends EventEmitter {
         if (err) {
           return reject(err)
         }
-        const d = data.split(':')
+
+        const [, pid, port, password, protocol] = data.split(':')
         resolve({
-          pid: d[1],
-          port: d[2],
-          password: d[3],
-          protocol: d[4],
-          authToken: 'Basic ' + Buffer.from('riot:' + d[3]).toString('base64'),
-          baseUri: `${d[4]}://riot:${d[3]}@127.0.0.1:${d[2]}/`
+          pid: pid,
+          port: port,
+          password: password,
+          protocol: protocol,
+          authToken: 'Basic ' + Buffer.from('riot:' + password).toString('base64'),
+          baseUri: `${protocol}://riot:${password}@127.0.0.1:${port}/`
         })
       })
     })

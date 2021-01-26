@@ -34,10 +34,6 @@ class LeagueConnector extends EventEmitter {
   isConnected () {
     return this.connectionHandler.connected
   }
-
-  getLoginData () {
-    return this.connectionHandler.loginData
-  }
 }
 
 module.exports = LeagueConnector

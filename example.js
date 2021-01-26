@@ -1,4 +1,4 @@
-const LeagueConnector = require('league-connector')
+const LeagueConnector = require('./index')
 const https = require('https')
 const instance = new LeagueConnector()
 

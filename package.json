@@ -8,23 +8,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netcatt/league-connector.git"
+    "url": "git+https://github.com/xnetcat/league-connector.git"
   },
-  "author": "kko7",
+  "author": "xnetcat",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/netcatt/league-connector/issues"
+    "url": "https://github.com/xnetcat/league-connector/issues"
   },
-  "homepage": "https://github.com/netcatt/league-connector#readme",
+  "homepage": "https://github.com/xnetcat/league-connector#readme",
   "dependencies": {
-    "chokidar": "^3.4.0",
+    "chokidar": "^3.5.1"
   },
   "devDependencies": {
-    "eslint": "^7.3.1",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.21.2",
+    "eslint": "^7.18.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.1.0"
   }
 }
